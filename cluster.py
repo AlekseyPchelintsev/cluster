@@ -19,11 +19,11 @@ class Cluster:
         return self.node_keys[node_index]
     
     def insert(self, data):
-            """Вставка данных в кластер."""
-            data_id = str(uuid.uuid4())  # Генерируем уникальный ID данных
-            node = self._get_node(data_id)  # Определяем, в какую ноду попадут данные
-            self.nodes[node][data_id] = data
-            return data_id
+        """Вставка данных в кластер."""
+        data_id = str(uuid.uuid4())  # Генерируем уникальный ID данных
+        node = self._get_node(data_id)  # Определяем, в какую ноду попадут данные
+        self.nodes[node][data_id] = data
+        return data_id
 
     def select(self, data_id):
         """Поиск данных по ID."""
@@ -78,7 +78,7 @@ if __name__ == "__main__":
     # Поиск данных
     print("\nПоиск данных:")
     print(f"Данные с ID {id1}: {cluster.select(id1)}")
-    print(f"Данные с ID {id2}: {cluster.select(id2)}")
+    print(f"Данные с ID {id3}: {cluster.select(id3)}")
     
     # Обновляем данные
     cluster.update(id1, {'name': 'updated_lala'})
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     
     # Удаляем данные
     cluster.delete(id3)
-    # print(f"\nДанные с ID {id3} после удаления: {cluster.select(id3)}")
+    print(f"\nДанные с ID {id3} после удаления: {cluster.select(id3)}")
     
     # Изменяем размер кластера и перераспределяем данные
     cluster.resize(12)
